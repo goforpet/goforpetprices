@@ -1,0 +1,55 @@
+.goforpet-prices .product-variants-item { padding: 10px 0; }
+.goforpet-prices .product-variants-item .price-container { padding-bottom: 15px; }
+.goforpet-prices .product-variants-item .price {
+	color: #00594e;
+	font-weight: bold;
+	font-size: 16px;
+}
+.goforpet-prices .product-variants-item .price span.per-part {
+	color: #666;
+	font-style: italic;
+	font-size: 10px;
+}
+.goforpet-prices .product-variants-item .regular-price {
+	color: #333;
+	font-weight: lighter;
+	font-size: 12px;
+	text-decoration: line-through;
+}
+.goforpet-prices .product-variants-item .unit-price { font-size: 12px; }
+.goforpet-prices .product-add-to-cart {
+    border: 1px solid #d6d4d4;
+    padding: 5px;
+}
+.goforpet-prices .product-add-to-cart:hover { border-color: #00594e; }
+.goforpet-prices .product-add-to-cart button.btn.add-to-cart { font-size: 12px; padding: 10px 15px 10px 30px; }
+.goforpet-prices .product-add-to-cart button.btn.add-to-cart i {
+    font-size: 20px;
+    left: 6px;
+}
+.goforpet-prices .qty input[type=number]::-webkit-outer-spin-button,
+.goforpet-prices .qty input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.goforpet-prices .qty input[type=number] {
+    -moz-appearance: textfield;
+    text-align: center;
+    height: 40px;
+    border: 1px solid #d6d4d4;
+}
+.goforpet-prices .product-availability { font-size: 12px; padding-top: 12px; }
+.goforpet-prices .product-availability i { 
+    font-size: 15px;
+    top: -2px;
+    position: relative;
+}
+.goforpet-prices .qty .bootstrap-touchspin { width: 150px; }
+.goforpet-prices .bootstrap-touchspin .btn { height: 40px; }
+.goforpet-prices .bootstrap-touchspin .btn:before { color: #00594e; }
+.goforpet-prices .bootstrap-touchspin .input-group-btn { width: 45px; float: left; }
+.goforpet-prices .cart-block { padding-top: 10px; }
+.goforpet-prices .control-label { font-size: 16px; }
+.goforpet-prices .designation { color: #00594e; font-weight: bold; font-size: 17px; padding-bottom: 10px; }
+.goforpet-prices .designations li { display: block; text-transform: uppercase; padding-bottom: 10px; }
+.goforpet-prices .designations li span { display: block; color: #666; font-size: 10px; }
