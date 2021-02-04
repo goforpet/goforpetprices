@@ -84,6 +84,7 @@ class GoForPetPrices extends Module
             LEFT JOIN `" . _DB_PREFIX_ . "attribute_group_lang` agl ON (ag.id_attribute_group=agl.id_attribute_group AND agl.id_lang=" . (int) $this->context->language->id . ")
             WHERE pa.id_product=" . pSQL($product->id) . "
             GROUP BY pac.id_product_attribute
+            ORDER BY a.position ASC
         ");
 
         $locale = Tools::getContextLocale($this->context);
