@@ -3,6 +3,30 @@
 	<div class="clearfix product-variants-item">
 		<form action="{$urls.pages.cart}" method="post">
 			<div class="product-add-to-cart" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer" data-product-attribute="{$combination.id_product_attribute}" data-product-images='{$combination.images|@json_encode nofilter}'>
+				<meta itemprop="url" content="{$combination.url}" />
+				<link itemprop="availability" href="https://schema.org/InStock" />
+				<meta itemprop="priceCurrency" content="{$currency.iso_code}" />
+				{if $product.has_discount AND $combination.specific_price.to AND $combination.specific_price.to != "0000-00-00 00:00:00"}
+				<meta itemprop="priceValidUntil" content="{$combination.specific_price.to}" />
+				{/if}
+				{if !empty($combination.ean13) OR !empty($combination.reference)}
+				<meta itemprop="gtin" content="{if empty($combination.ean13)}{$combination.reference}{else}{$combination.ean13}{/if}" />
+				{/if}
+				{if !empty($combination.ean13)}
+				<meta itemprop="gtin13" content="{$combination.ean13}" />
+				{/if}
+				{if !empty($combination.isbn)}
+				<meta itemprop="isbn" content="{$combination.isbn}" />
+				{/if}
+				{if !empty($combination.upc)}
+				<meta itemprop="upc" content="{$combination.upc}" />
+				{/if}
+				{if !empty($combination.reference)}
+				<meta itemprop="sku" content="{$combination.reference}" />
+				{/if}
+				{if !empty($product_manufacturer->name)}
+				<meta itemprop="brand" content="{$product_manufacturer->name}" />
+				{/if}
 				<p class="hidden">
                     <input type="hidden" name="token" value="{$static_token}" />
                     <input type="hidden" class="id_combination" name="id_product_attribute" value="{$combination.id_product_attribute}" />
@@ -13,7 +37,7 @@
 						<div class="row designation">
 							<div class="col-xs-4 hidden-md-up">
 								{if !empty($combination.images)}
-									<img src="{$combination.images[0].medium}" alt="{$product.name}" />
+								<img src="{$combination.images[0].medium}" alt="{$product.name}" />
 								{/if}
 							</div>
 							<div class="col-xs-8">
@@ -22,9 +46,6 @@
 									<li><span>{$key}</span>{$designation}</li>
 									{/foreach}
 								</ul>
-								{if !empty($combination.ean13)}
-								<meta itemprop="gtin13" content="{$combination.ean13}" />
-								{/if}
 							</div>
 						</div>
 					</div>
@@ -39,7 +60,7 @@
 									<div class="regular-price">{$combination.price_without_reduction}</div>
 									{/if}
 									<div class="price">
-										<span{if $combination.reduction} title="{l s='You save %s' sprintf=[$combination.reduction] mod='goforpetprices'}"{/if}>{$combination.price}</span>
+										<span itemprop="price" content="{$combination.price_amount}"{if $combination.reduction} title="{l s='You save %s' sprintf=[$combination.reduction] mod='goforpetprices'}"{/if}>{$combination.price}</span>
 										{if $combination.minimal_quantity > 1}
 										<span class="per-part">{l s='per part' mod='goforpetprices'}</span>
 										{/if}

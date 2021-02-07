@@ -18,7 +18,7 @@ class GoForPetPrices extends Module
     {
         $this->name          = 'goforpetprices';
         $this->tab           = 'front_office_features';
-        $this->version       = '1.0.0';
+        $this->version       = '1.0.1';
         $this->author        = 'Go For Pet';
         $this->need_instance = 1;
 
@@ -129,6 +129,7 @@ class GoForPetPrices extends Module
                 'quantity' => $result['quantity'],
                 'minimal_quantity' => $result['minimal_quantity'],
                 'price' => $locale->formatPrice($price, $this->context->currency->iso_code),
+                'price_amount' => $price,
                 'price_without_reduction' => $locale->formatPrice(
                     $original,
                     $this->context->currency->iso_code
@@ -139,7 +140,19 @@ class GoForPetPrices extends Module
                 'reference' => $result['reference'],
                 'ean13' => $result['ean13'],
                 'upc' => $result['upc'],
-                'isbn' => $result['isbn']
+                'isbn' => $result['isbn'],
+                'url' => $this->context->link->getProductLink(new Product($product->id), null, null, null, null, null, (int) $result['id_product_attribute']),
+                'specific_price' => SpecificPrice::getSpecificPrice(
+                    (int) $product->id,
+                    $this->context->shop->id,
+                    $this->context->currency->id,
+                    $this->context->country->id,
+                    Customer::getDefaultGroupId($this->context->customer->id),
+                    $result['minimal_quantity'],
+                    (int) $result['id_product_attribute'],
+                    $this->context->customer->id,
+                    $this->context->cart->id
+                )
             );
         }
 
